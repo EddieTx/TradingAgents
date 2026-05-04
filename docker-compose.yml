@@ -1,5 +1,6 @@
 services:
   tradingagents:
+    container_name: tradingagents
     build: .
     env_file:
       - .env
@@ -9,6 +10,7 @@ services:
     stdin_open: true
 
   ollama:
+    container_name: tradingagents-ollama
     image: ollama/ollama:latest
     volumes:
       - ollama_data:/root/.ollama
@@ -16,6 +18,7 @@ services:
       - ollama
 
   tradingagents-ollama:
+    container_name: tradingagents-tradingagents-ollama
     build: .
     env_file:
       - .env
